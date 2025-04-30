@@ -21,7 +21,7 @@ const About = () => {
                 and Android development. I enjoy tackling challenging problems and creating innovative solutions.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Currently, I'm focused on expanding my knowledge in artificial intelligence and data science
+                Currently, I'm focused on expanding my knowledge in Android Development and Machine Learning
                 while applying my skills to real-world projects. I'm always open to collaborate on exciting
                 projects and opportunities to learn and grow.
               </p>

@@ -36,26 +36,26 @@ const Contact = () => {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "abcd@gmail.com",
-      href: "mailto:abcd@gmail.com",
+      value: "vishwathman@gmail.com",
+      href: "mailto:vishwathma@gmail.com",
     },
     {
       icon: <Phone className="h-5 w-5" />,
       label: "Phone",
-      value: "+91 123456789",
-      href: "tel:+91123456789",
+      value: "+91 9496178462",
+      href: "tel:+919496178462",
     },
     {
       icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
       value: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://linkedin.com/in/vishwathma-n",
     },
     {
       icon: <Github className="h-5 w-5" />,
       label: "GitHub",
       value: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/Vishwathma2004",
     },
   ];
 

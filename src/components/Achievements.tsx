@@ -35,12 +35,12 @@ const Achievements = () => {
     {
       title: "Android App using Java",
       issuer: "Spoken Tutorial, Indian Institute of Technology, Bombay",
-      link: "#",
+      link: "https://www.linkedin.com/posts/vishwathma-n_course-certificate-activity-7235506751226138624-4r_e/?utm_source=share&utm_medium=member_android&rcm=ACoAAEQBtFgBF7YDGC00kNJIRcdE9MGYPNGDGbw",
     },
     {
       title: "Introduction to Java",
       issuer: "Online Certification",
-      link: "#",
+      link: "https://www.coursera.org/account/accomplishments/verify/CTXJ8YQSM4TU",
     },
   ];
 

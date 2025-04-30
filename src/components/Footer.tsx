@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold">Vishwathma<span className="text-theme-primary">.</span></h3>
+            <h3 className="text-xl font-bold">Vishwathma N<span className="text-theme-primary"></span></h3>
             <p className="text-sm text-gray-300 mt-1">
               Computer Science Engineering Student
             </p>
@@ -17,7 +17,7 @@ const Footer = () => {
           
           <div className="flex space-x-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Vishwathma2004"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white hover:text-theme-primary transition-colors"
@@ -26,7 +26,7 @@ const Footer = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/vishwathma-n"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white hover:text-theme-primary transition-colors"
@@ -35,7 +35,7 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:abcd@gmail.com"
+              href="mailto:vishwathman@gmail.com"
               className="p-2 text-white hover:text-theme-primary transition-colors"
               aria-label="Email"
             >
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-6 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
-          <p>© {currentYear} Vishwathma N. All rights reserved.</p>
+          <p>© {currentYear} Vishwathma N All rights reserved.</p>
         </div>
       </div>
     </footer>

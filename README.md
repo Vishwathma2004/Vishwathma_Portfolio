@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# Vishwathma N - Personal Portfolio
 
-## Project info
+Welcome to the official repository for my personal portfolio website. This site serves as a central hub to showcase my academic journey, technical proficiencies, professional experience, and project accomplishments in the field of Computer Science Engineering.
 
-**URL**: https://lovable.dev/projects/6e6ac878-c126-4a6e-893f-4cf2cfad3ebc
+## 🧑‍💻 About Me
 
-## How can I edit this code?
+Hi, I'm **Vishwathma N**, a Computer Science Engineering student at **St. Joseph Engineering College**, Mangaluru. I am deeply passionate about leveraging technology to drive innovation and solve complex real-world problems. My primary areas of focus include:
 
-There are several ways of editing your application.
+- **Android Development**
+- **Machine Learning**
+- **Graph Neural Networks**
+- **Software Engineering**
 
-**Use Lovable**
+I am committed to continuous learning and actively seek opportunities to apply my skills in impactful projects and collaborations.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6e6ac878-c126-4a6e-893f-4cf2cfad3ebc) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Tech Stack
 
-**Use your preferred IDE**
+### 👨‍💻 Programming Languages
+- Java
+- Python
+- C
+- HTML
+- CSS
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 📊 Technologies & Domains
+- Machine Learning
+- Android App Development
+- Full Stack Development
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🛠 Tools & Platforms
+- Git & GitHub
+- MySQL
+- Figma
+- UNIX/Linux
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🎓 Education
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+**B.E. in Computer Science and Engineering**  
+St. Joseph Engineering College, Mangaluru, India  
+📅 2022 – 2026 | 📊 CGPA: **9.26** (Till 5th Semester)
 
-# Step 3: Install the necessary dependencies.
-npm i
+**PUC (PCMB)**  
+SAPHSS, Agalpady  
+📅 2020 – 2022 | 📈 Percentage: **97.08%**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+**SSLC**  
+NHSS, Perdala  
+📅 2019 – 2020 | 🏆 Grade: **All A+**
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 💼 Experience
 
-**Use GitHub Codespaces**
+### **Junior Intern**  
+**The Nirvana Labs (Currently ProfileCity)**  
+📅 March 2024 – April 2024
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Contributed to the **Refermate - Outreach Team** project.
+- Completed **50 hours** over **4.5 weeks**, showcasing adaptability and attention to detail in a dynamic startup environment.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🧠 Projects
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 🔹 Sea Trash Detection and Clean-Up System
+- Developed a hybrid AI/ML framework to detect marine debris from **satellite imagery** and **ROV footage**.
+- Integrated **Google Earth Engine API**, **OpenCV**, and **TensorFlow**.
+- Focused on environmental sustainability and oceanic pollution mitigation.
 
-## How can I deploy this project?
+**Tech Stack:** `Python`, `TensorFlow`, `OpenCV`, `GEE API`
 
-Simply open [Lovable](https://lovable.dev/projects/6e6ac878-c126-4a6e-893f-4cf2cfad3ebc) and click on Share -> Publish.
+[Code Repository](#)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+### 🔹 Stock Price Predictor App
+- Designed an ML-based application to predict stock trends using **Yahoo Finance** data and **Linear Regression**.
+- Evaluated with **MSE** and visualized results via **Matplotlib**.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Tech Stack:** `Python`, `pandas`, `NumPy`, `scikit-learn`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+[Code Repository](#) | [Live Demo](#)
+
+---
+
+## 🏅 Achievements & Certifications
+
+### 🏆 Achievements
+- **Top 15 Finalist**, HackFest'25 @ NMAMIT Nitte (National Hackathon)
+- **Reliance Undergraduate Scholar 2022**
+- **Wipro Earthian**, Pre-Quarter Finalist (Sustainability Challenge)
+- **Runner-Up**, VTU Rest-of-Bangalore CHESS 2023–24
+
+### 📜 Certifications
+- Android App using Java – IIT Bombay (Spoken Tutorial)
+- Introduction to Java – Online Certification
+
+---
+
+## 📬 Contact
+
+Feel free to reach out via any of the platforms below. I'm open to collaborations, internships, and technical discussions.
+
+📧 **Email:** vishwathman@gmail.com  
+📞 **Phone:** +91 9496178462  
+🔗 [LinkedIn](#)  
+🐙 [GitHub](#)
+
+---
+
+## 📄 License
+
+© 2025 Vishwathma N. All rights reserved.  
+This repository is for personal use and portfolio demonstration only. Redistribution or reproduction in any form is prohibited without prior consent.
+
+---
+

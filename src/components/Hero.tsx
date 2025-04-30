@@ -38,7 +38,7 @@ const Hero = () => {
           
           <div className="animate-fade-in flex space-x-4 delay-300">
             <a 
-              href="https://github.com" 
+              href="https://github.com/Vishwathma2004" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-2 bg-gray-100 hover:bg-gray-200 text-theme-secondary rounded-full transition-colors"
@@ -47,7 +47,7 @@ const Hero = () => {
               <Github size={20} />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://linkedin.com/in/vishwathma-n" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-2 bg-gray-100 hover:bg-gray-200 text-theme-secondary rounded-full transition-colors"
@@ -56,7 +56,7 @@ const Hero = () => {
               <Linkedin size={20} />
             </a>
             <a 
-              href="mailto:abcd@gmail.com" 
+              href="mailto:vishwathman@gmail.com" 
               className="p-2 bg-gray-100 hover:bg-gray-200 text-theme-secondary rounded-full transition-colors"
               aria-label="Email"
             >

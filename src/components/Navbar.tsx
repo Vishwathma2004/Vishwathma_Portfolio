@@ -45,7 +45,7 @@ const Navbar = () => {
           to="/"
           className="text-2xl font-bold text-theme-secondary hover:text-theme-primary transition-colors"
         >
-          Vishwathma<span className="text-theme-primary">.</span>
+          Vishwathma N<span className="text-theme-primary"></span>
         </Link>
 
         {/* Desktop navigation */}

@@ -11,7 +11,7 @@ const Projects = () => {
         "Developed an AI/ML-based solution for detecting marine debris using satellite imagery and ROV images. Integrated Google Earth Engine API for data retrieval and OpenCV for image preprocessing.",
       tech: ["Python", "TensorFlow", "GEE API", "OpenCV"],
       links: {
-        github: "https://github.com",
+        github: "https://github.com/hackfest-dev/Hackfest25-37",
       },
       date: "Feb 2025",
     },
@@ -21,8 +21,8 @@ const Projects = () => {
         "Built a stock prediction app using historical stock data fetched from Yahoo Finance and Linear Regression. Delivered insights using MSE evaluation and Matplotlib visualizations.",
       tech: ["Python", "scikit-learn", "pandas", "NumPy"],
       links: {
-        github: "https://github.com",
-        live: "https://example.com",
+        github: "https://github.com/Vishwathma2004/stock_price_predictor",
+        live: "https://stock-price-predictor-application.streamlit.app/",
       },
       date: "Dec 2024",
     },
