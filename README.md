@@ -73,7 +73,7 @@ NHSS, Perdala
 
 **Tech Stack:** `Python`, `TensorFlow`, `OpenCV`, `GEE API`
 
-[Code Repository](#)
+[Code Repository](https://github.com/hackfest-dev/Hackfest25-37)
 
 ---
 
@@ -83,7 +83,7 @@ NHSS, Perdala
 
 **Tech Stack:** `Python`, `pandas`, `NumPy`, `scikit-learn`
 
-[Code Repository](#) | [Live Demo](#)
+[Code Repository](https://github.com/Vishwathma2004/stock_price_predictor) | [Live Demo](https://stock-price-predictor-application.streamlit.app/)
 
 ---
 
@@ -107,8 +107,8 @@ Feel free to reach out via any of the platforms below. I'm open to collaboration
 
 📧 **Email:** vishwathman@gmail.com  
 📞 **Phone:** +91 9496178462  
-🔗 [LinkedIn](#)  
-🐙 [GitHub](#)
+🔗 [LinkedIn](www.linkedin.com/in/vishwathma-n)  
+🐙 [GitHub](https://github.com/Vishwathma2004/)
 
 ---
 
