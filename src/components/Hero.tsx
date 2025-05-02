@@ -19,7 +19,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-3xl">
           <h1 className="animate-fade-in text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            Hi, I'm <span className="text-theme-primary">Vishwathma N</span>
+          Hi, I'm <span className="text-theme-primary whitespace-nowrap">Vishwathma&nbsp;N</span>
           </h1>
           
           <p className="animate-fade-in text-xl md:text-2xl text-gray-600 mb-8 delay-100">
