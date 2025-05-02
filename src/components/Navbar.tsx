@@ -88,7 +88,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="/Vishwathma_Resume.pdf"
+                href="Vishwathma_Portfolio\Vishwathma_N_Resume.pdf"
                 download
                 className="mt-4 text-white bg-theme-primary hover:bg-theme-primary/90 px-4 py-2 rounded-md text-center"
               >
