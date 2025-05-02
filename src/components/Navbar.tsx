@@ -22,7 +22,7 @@ const Navbar = () => {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Achievements", href: "#achievements" },
-    { name: "Contact", href: "#contact" }
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -53,7 +53,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="/Vishwathma_Resume.pdf"
+            href="/Vishwathma_N_Resume.pdf"
             download
             className="text-white bg-theme-primary hover:bg-theme-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
           >
@@ -88,7 +88,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="Vishwathma_Portfolio\Vishwathma_N_Resume.pdf"
+                href="/Vishwathma_N_Resume.pdf"
                 download
                 className="mt-4 text-white bg-theme-primary hover:bg-theme-primary/90 px-4 py-2 rounded-md text-center"
               >
