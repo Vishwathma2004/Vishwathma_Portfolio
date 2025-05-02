@@ -1,8 +1,6 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,13 +8,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -45,7 +38,7 @@ const Navbar = () => {
           to="/"
           className="text-2xl font-bold text-theme-secondary hover:text-theme-primary transition-colors"
         >
-          Vishwathma N<span className="text-theme-primary"></span>
+          Vishwathma N
         </Link>
 
         {/* Desktop navigation */}
@@ -59,9 +52,13 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button className="bg-theme-primary hover:bg-theme-primary/90">
+          <a
+            href="/Vishwathma_Resume.pdf"
+            download
+            className="text-white bg-theme-primary hover:bg-theme-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+          >
             Resume
-          </Button>
+          </a>
         </nav>
 
         {/* Mobile menu button */}
@@ -90,9 +87,13 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button className="mt-4 bg-theme-primary hover:bg-theme-primary/90">
+              <a
+                href="/Vishwathma_Resume.pdf"
+                download
+                className="mt-4 text-white bg-theme-primary hover:bg-theme-primary/90 px-4 py-2 rounded-md text-center"
+              >
                 Resume
-              </Button>
+              </a>
             </nav>
           </div>
         )}
