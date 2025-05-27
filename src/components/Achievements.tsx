@@ -42,6 +42,11 @@ const Achievements = () => {
       issuer: "Online Certification",
       link: "https://www.coursera.org/account/accomplishments/verify/CTXJ8YQSM4TU",
     },
+    {
+      title : " The Complete Full-Stack Web Development Bootcamp",
+      issuer: "Udemy",
+      link : "https://www.udemy.com/certificate/UC-481091a1-53b4-4564-a07b-403bc98c752e/"
+    }
   ];
 
   return (
