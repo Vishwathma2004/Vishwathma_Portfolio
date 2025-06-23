@@ -6,6 +6,16 @@ import { Github, Link } from "lucide-react";
 const Projects = () => {
   const projectsData = [
     {
+      title: "AgriData",
+      description:
+        "Developing an Android app to collect farmer-contributed image data stored via Firebase and Cloudinary. Used in a GNN project for multimodal agricultural analysis.",
+      tech: ["Java", "Firebase", "Cloudinary", "Android SDK"],
+      links: {
+        github: "", // Add link if available
+      },
+      date: "May 2025 – Present",
+    },
+    {
       title: "Sea Trash Detection and Clean-Up System",
       description:
         "Developed an AI/ML-based solution for detecting marine debris using satellite imagery and ROV images. Integrated Google Earth Engine API for data retrieval and OpenCV for image preprocessing.",
@@ -32,7 +42,7 @@ const Projects = () => {
     <section id="projects" className="section bg-gray-50">
       <div className="container mx-auto">
         <h2 className="section-title text-center">Projects</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projectsData.map((project, index) => (
             <Card key={index} className="card-hover overflow-hidden flex flex-col">
