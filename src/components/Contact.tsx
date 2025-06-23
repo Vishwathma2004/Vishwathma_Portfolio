@@ -5,11 +5,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import emailjs from "emailjs-com"; 
+import emailjs from "@emailjs/browser";
 
-const SERVICE_ID = "service_091xzgk";
+// EmailJS configuration
+const SERVICE_ID = "service_wo5rp3d";
 const TEMPLATE_ID = "template_xbflhsj";
-const PUBLIC_KEY = "sc4yi0jG01V6XZqPl"; 
+const PUBLIC_KEY = "sc4yi0jG01V6XZqPl";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
