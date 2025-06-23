@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import emailjs from "emailjs-com"; // ✅ Added EmailJS
+
+const SERVICE_ID = "service_091xzgk";
+const TEMPLATE_ID = "template_xbflhsj";
+const PUBLIC_KEY = "sc4yi0jG01V6XZqPl"; // aka user ID
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,22 +18,26 @@ const Contact = () => {
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // In a real application, you would send this data to your backend
-    console.log("Form submitted:", formData);
-    
-    // Show success message
-    toast.success("Thank you for your message! I'll get back to you soon.");
-    
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+      .then(() => {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        toast.error("Something went wrong. Please try again later.");
+      });
   };
 
   const contactInfo = [
@@ -63,7 +71,7 @@ const Contact = () => {
     <section id="contact" className="section bg-gray-50">
       <div className="container mx-auto">
         <h2 className="section-title text-center">Get In Touch</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Contact Form */}
           <Card className="card-hover">
@@ -116,7 +124,7 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
-          
+
           {/* Contact Info */}
           <Card className="card-hover">
             <CardContent className="pt-6">
@@ -126,7 +134,7 @@ const Contact = () => {
               <p className="text-gray-600 mb-6">
                 Feel free to reach out to me through any of these channels. I'll get back to you as soon as possible.
               </p>
-              
+
               <div className="space-y-4">
                 {contactInfo.map((item, index) => (
                   <a
