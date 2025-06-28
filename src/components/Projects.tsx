@@ -19,7 +19,7 @@ const Projects = () => {
       tech: ["JavaScript", "HTML", "CSS", "LocalStorage"],
       links: {
         github: "https://github.com/Vishwathma2004/Expense-Tracker",
-        live: "https://expense-tracker-app-vishwa.netlify.app/",
+        live: "https://expense-tracker-vishwathma2004s-projects.vercel.app/",
       },
       date: "Jun 2025",
       tags: [],
