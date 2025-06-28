@@ -13,6 +13,18 @@ import { Github, Link } from "lucide-react";
 const Projects = () => {
   const projectsData = [
     {
+      title: "Expense Tracker",
+      description:
+        "This app tracks your income and expenses. It features a responsive UI and stores data locally or in the cloud.",
+      tech: ["JavaScript", "HTML", "CSS", "LocalStorage"],
+      links: {
+        github: "https://github.com/Vishwathma2004/Expense-Tracker",
+        live: "https://expense-tracker-app-vishwa.netlify.app/",
+      },
+      date: "Jun 2025",
+      tags: [],
+    },
+    {
       title: "AgriData",
       description:
         "Android app to collect farmer image data for GNN-based agricultural analysis.",
@@ -109,11 +121,18 @@ const Projects = () => {
                     {project.title}
                   </CardTitle>
                   <div className="flex flex-col items-end gap-1">
-                    <Badge variant="outline" className="bg-theme-primary/10 text-theme-primary">
+                    <Badge
+                      variant="outline"
+                      className="bg-theme-primary/10 text-theme-primary"
+                    >
                       {project.date}
                     </Badge>
                     {project.tags.map((tag, i) => (
-                      <Badge key={i} variant="outline" className="text-xs bg-blue-100 text-blue-600">
+                      <Badge
+                        key={i}
+                        variant="outline"
+                        className="text-xs bg-blue-100 text-blue-600"
+                      >
                         {tag}
                       </Badge>
                     ))}
