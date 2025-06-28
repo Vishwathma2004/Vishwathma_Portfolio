@@ -15,7 +15,7 @@ const Projects = () => {
     {
       title: "Expense Tracker",
       description:
-        "This app tracks your income and expenses. It features a responsive UI and stores data locally or in the cloud.",
+        "This is a user-friendly website that helps users track their income and expenses based on their personal logs. It also features a recurring category system to automatically add monthly expenses, eliminating the need for repetitive manual entries.",
       tech: ["JavaScript", "HTML", "CSS", "LocalStorage"],
       links: {
         github: "https://github.com/Vishwathma2004/Expense-Tracker",
