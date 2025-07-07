@@ -13,6 +13,18 @@ import { Github, Link } from "lucide-react";
 const Projects = () => {
   const projectsData = [
     {
+      title: "LeetCode Hint Fetcher Extension",
+      description:
+        "A Chrome Extension that fetches hints and algorithmic ideas for LeetCode problems using Google Gemini API. Includes a deployed Node.js backend.",
+      tech: ["JavaScript", "Chrome Extension", "Node.js", "Express", "Gemini API"],
+      links: {
+        github: "https://github.com/Vishwathma2004/leetcode-hint-extension",
+        live: "https://leetcode-hint-extension.onrender.com",
+      },
+      date: "Jul 2025",
+      tags: ["AI", "Browser Extension"],
+    },
+    {
       title: "Expense Tracker",
       description:
         "A user-friendly web app to track income and expenses. Supports recurring categories and uses local storage.",
