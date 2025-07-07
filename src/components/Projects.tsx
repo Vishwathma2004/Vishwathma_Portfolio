@@ -15,7 +15,7 @@ const Projects = () => {
     {
       title: "Expense Tracker",
       description:
-        "This is a user-friendly website that helps users track their income and expenses based on their personal logs. It also features a recurring category system to automatically add monthly expenses, eliminating the need for repetitive manual entries.",
+        "A user-friendly web app to track income and expenses. Supports recurring categories and uses local storage.",
       tech: ["JavaScript", "HTML", "CSS", "LocalStorage"],
       links: {
         github: "https://github.com/Vishwathma2004/Expense-Tracker",
@@ -57,7 +57,7 @@ const Projects = () => {
     {
       title: "Tic-Tac-Toe Game App",
       description:
-        "Android-based interactive Tic-Tac-Toe game built using Java and Gradle.",
+        "Interactive Tic-Tac-Toe game built using Java and Gradle for Android devices.",
       tech: ["Java", "Android SDK", "Gradle"],
       links: { github: "https://github.com/Vishwathma2004/Tic-Tac-Toe-App" },
       date: "Sept 2024",
@@ -68,16 +68,15 @@ const Projects = () => {
       description:
         "Android app to convert currencies using a live REST API. Designed for simplicity and speed.",
       tech: ["Java", "REST API", "Android Studio"],
-      links: { github: "https://github.com/Vishwathma2004/Currency-Converter-App" },
+      links: {
+        github: "https://github.com/Vishwathma2004/Currency-Converter-App",
+      },
       date: "Aug 2024",
       tags: ["Mini Project"],
     },
   ];
 
-  const allTechs = Array.from(
-    new Set(projectsData.flatMap((p) => p.tech))
-  ).sort();
-
+  const allTechs = Array.from(new Set(projectsData.flatMap((p) => p.tech))).sort();
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
   const filteredProjects = selectedTech
@@ -85,12 +84,14 @@ const Projects = () => {
     : projectsData;
 
   return (
-    <section id="projects" className="section bg-gray-50">
-      <div className="container mx-auto">
-        <h2 className="section-title text-center">Projects</h2>
+    <section id="projects" className="py-12 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          🚀 Projects
+        </h2>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 my-4">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           <Button
             variant={selectedTech === null ? "default" : "outline"}
             onClick={() => setSelectedTech(null)}
@@ -109,39 +110,38 @@ const Projects = () => {
         </div>
 
         {/* Project Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project, index) => (
-            <Card
-              key={index}
-              className="card-hover overflow-hidden flex flex-col"
-            >
+            <Card key={index} className="flex flex-col h-full">
               <CardHeader>
                 <div className="flex justify-between items-start">
-                  <CardTitle className="text-xl font-semibold text-theme-secondary">
+                  <CardTitle className="text-xl font-semibold text-gray-900">
                     {project.title}
                   </CardTitle>
                   <div className="flex flex-col items-end gap-1">
                     <Badge
                       variant="outline"
-                      className="bg-theme-primary/10 text-theme-primary"
+                      className="bg-blue-100 text-blue-700 text-xs"
                     >
                       {project.date}
                     </Badge>
-                    {project.tags.map((tag, i) => (
-                      <Badge
-                        key={i}
-                        variant="outline"
-                        className="text-xs bg-blue-100 text-blue-600"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
+                    {project.tags &&
+                      project.tags.map((tag, i) => (
+                        <Badge
+                          key={i}
+                          variant="outline"
+                          className="text-xs bg-green-100 text-green-700"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
                   </div>
                 </div>
               </CardHeader>
+
               <CardContent className="flex-grow">
                 <p className="text-gray-700 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-3">
+                <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, i) => (
                     <Badge key={i} variant="outline" className="bg-gray-100">
                       {tech}
@@ -149,6 +149,7 @@ const Projects = () => {
                   ))}
                 </div>
               </CardContent>
+
               <CardFooter className="border-t pt-4 flex gap-3">
                 {project.links.github && (
                   <Button variant="outline" size="sm" asChild>
