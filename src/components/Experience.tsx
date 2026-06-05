@@ -8,7 +8,7 @@ const Experience = () => {
       position: "Software Development Intern",
       company: "MRI Software",
       location: "Bangalore",
-      period: "Mar 2026 – Present",
+      period: "Jan 2026 – June 2026",
       responsibilities: [
         "Contributing to the development of the Appstudio PageBuilder tool, enabling dynamic UI component customization across core product suites.",
         "Engineering scalable, modular interface architectures and internal framework tooling utilizing Angular and .NET.",
