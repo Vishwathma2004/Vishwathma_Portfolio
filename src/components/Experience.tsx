@@ -7,7 +7,7 @@ const Experience = () => {
     {
       position: "Software Development Intern",
       company: "MRI Software",
-      location: "Framework Department",
+      location: "Bangalore",
       period: "Mar 2026 – Present",
       responsibilities: [
         "Contributing to the development of the Appstudio PageBuilder tool, enabling dynamic UI component customization across core product suites.",
