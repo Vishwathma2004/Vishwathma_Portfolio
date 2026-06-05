@@ -116,8 +116,8 @@ const Hero = () => {
                 </div>
                 <div className="pl-4">
                   <span className="text-slate-400">domains:</span> [
-                  <span className="text-indigo-400">"Computer Vision"</span>,{" "}
-                  <span className="text-indigo-400">"IoT"</span>
+                  <span className="text-indigo-400">"AIML"</span>,{" "}
+                  <span className="text-indigo-400">"FullStack"</span>
                   ]
                 </div>
                 <div className="pl-4">
