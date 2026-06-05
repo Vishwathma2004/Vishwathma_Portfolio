@@ -14,10 +14,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Consolidating categories to prevent standard desktop links crowding
+  // Strategically balanced core categories to accommodate the Skills section safely
   const navLinks = [
     { name: "About", href: "#about" },
-    { name: "Journey", href: "#experience" }, // Navigates to collective experience/education track
+    { name: "Skills", href: "#skills" }, // Added explicit target mapping to your Technical Capabilities section
+    { name: "Journey", href: "#experience" }, 
     { name: "Projects", href: "#projects" },
     { name: "Honors", href: "#achievements" },
     { name: "Contact", href: "#contact" },
@@ -51,14 +52,14 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-900 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-900 px-2.5 py-1.5 rounded-lg hover:bg-slate-50 transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
             
             {/* Download Resume Action Element */}
-            <div className="h-4 w-px bg-slate-200 mx-3" />
+            <div className="h-4 w-px bg-slate-200 mx-2.5" />
             <a
               href="/Vishwathma_N_Resume.pdf"
               download
