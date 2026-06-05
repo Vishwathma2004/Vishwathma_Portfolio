@@ -121,7 +121,7 @@ const Hero = () => {
                   ]
                 </div>
                 <div className="pl-4">
-                  <span className="text-slate-400">latestImpact:</span> <span className="text-amber-300">"Smart Irrigation Automation"</span>
+                  <span className="text-slate-400">latestImpact:</span> <span className="text-amber-300">"Sea Trash Detection"</span>
                 </div>
                 <div>&#125;;</div>
                 <div className="pt-4 text-slate-500">// Executing continuous development pipeline...</div>
