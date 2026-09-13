@@ -1,21 +1,21 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, Phone, ArrowUpRight, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { Github, Linkedin, Mail, ArrowDownToLine, Loader2, Send } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
 
-const SERVICE_ID = "service_wo5rp3d";
+const SERVICE_ID  = "service_wo5rp3d";
 const TEMPLATE_ID = "template_xbflhsj";
-const PUBLIC_KEY = "sc4yi0jG01V6XZqPl";
+const PUBLIC_KEY  = "sc4yi0jG01V6XZqPl";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData]     = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.08);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -27,151 +27,184 @@ const Contact = () => {
     emailjs
       .send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
       .then(() => {
-        toast.success("Message sent successfully!");
+        toast.success("Message sent! I'll get back to you soon.");
         setFormData({ name: "", email: "", message: "" });
       })
       .catch((error) => {
         console.error("EmailJS error:", error);
-        toast.error("Something went wrong. Please try again later.");
+        toast.error("Something went wrong. Please try again or email me directly.");
       })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+      .finally(() => setIsSubmitting(false));
   };
 
-  const socialLinks = [
-    { icon: <Linkedin className="h-5 w-5" />, label: "LinkedIn", href: "https://linkedin.com/in/vishwathma-n" },
-    { icon: <Github className="h-5 w-5" />, label: "GitHub", href: "https://github.com/Vishwathma2004" },
-  ];
-
-  const directContact = [
-    { icon: <Mail className="h-4 w-4 text-blue-600" />, value: "vishwathman@gmail.com", href: "mailto:vishwathma@gmail.com" },
-    { icon: <Phone className="h-4 w-4 text-emerald-600" />, value: "+91 9496178462", href: "tel:+919496178462" },
-  ];
-
   return (
-    <section id="contact" className="py-24 bg-slate-50/60 transition-colors duration-300">
-      <div className="container max-w-5xl mx-auto px-6">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          
-          {/* LEFT SIDE: Clean contextual typography & direct communication channels */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">Get In Touch</span>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                Let's discuss your next project.
-              </h2>
-              <p className="text-slate-500 text-base leading-relaxed pt-2 max-w-sm">
-                I'm always open to discussing full-stack opportunities, machine learning collaborations, or interesting software challenges.
-              </p>
-            </div>
+    <section id="contact" className="py-24 bg-slate-900 border-t border-slate-800">
+      <div className="section-container">
+        <div
+          ref={ref}
+          className={`animate-on-scroll ${isVisible ? "is-visible" : ""}`}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-            {/* Micro-strip inline links for phone/email */}
-            <div className="space-y-3 pt-2">
-              {directContact.map((item, idx) => (
-                <a 
-                  key={idx} 
-                  href={item.href}
-                  className="flex items-center gap-3 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors w-max group"
-                >
-                  <div className="p-2 rounded-lg bg-white border border-slate-100 shadow-sm">
-                    {item.icon}
-                  </div>
-                  <span>{item.value}</span>
-                </a>
-              ))}
-            </div>
+            {/* ── LEFT: Contact info ── */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-blue-400">
+                  Contact
+                </p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+                  Let's build<br />something useful.
+                </h2>
+                <p className="text-slate-400 text-[15px] leading-relaxed pt-1 max-w-sm">
+                  Open to full-stack roles, AI application projects, and engineering challenges where I can contribute from day one.
+                </p>
+              </div>
 
-            {/* Floating horizontal pill badges for main networks */}
-            <div className="flex flex-wrap gap-3 pt-4">
-              {socialLinks.map((item, index) => (
+              {/* Direct channels */}
+              <div className="space-y-3">
                 <a
-                  key={index}
-                  href={item.href}
+                  href="mailto:vishwathman@gmail.com"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-950 transition-all">
+                    <Mail className="w-4 h-4 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                  </div>
+                  <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                    vishwathman@gmail.com
+                  </span>
+                </a>
+
+                <a
+                  href="https://linkedin.com/in/vishwathma-n"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200/80 hover:border-slate-300 hover:text-slate-900 rounded-xl transition-all shadow-sm hover:shadow-md"
+                  className="flex items-center gap-3 group"
                 >
-                  {item.icon}
-                  <span>{item.label}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT SIDE: The Form Panel */}
-          <div className="lg:col-span-7">
-            <Card className="border border-slate-100 bg-white shadow-xl shadow-slate-200/50 rounded-2xl overflow-hidden">
-              <CardContent className="p-8 sm:p-10">
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                        Your Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="bg-slate-50/50 border-slate-200/80 focus-visible:ring-blue-500 focus-visible:bg-white h-11 rounded-xl transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="bg-slate-50/50 border-slate-200/80 focus-visible:ring-blue-500 focus-visible:bg-white h-11 rounded-xl transition-all"
-                      />
-                    </div>
+                  <div className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-950 transition-all">
+                    <Linkedin className="w-4 h-4 text-slate-400 group-hover:text-blue-400 transition-colors" />
                   </div>
+                  <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                    linkedin.com/in/vishwathma-n
+                  </span>
+                </a>
 
+                <a
+                  href="https://github.com/Vishwathma2004"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-slate-400 group-hover:bg-slate-700 transition-all">
+                    <Github className="w-4 h-4 text-slate-400 group-hover:text-slate-200 transition-colors" />
+                  </div>
+                  <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                    github.com/Vishwathma2004
+                  </span>
+                </a>
+              </div>
+
+              {/* Resume download */}
+              <a
+                href="/Vishwathma_N_Resume.pdf"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-600 text-slate-300 text-sm font-medium hover:border-white hover:text-white transition-all"
+              >
+                <ArrowDownToLine className="w-4 h-4" />
+                Download Resume
+              </a>
+            </div>
+
+            {/* ── RIGHT: Contact form ── */}
+            <div className="lg:col-span-7">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 sm:p-8 space-y-5"
+                noValidate
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                      Message
+                    <label
+                      htmlFor="contact-name"
+                      className="text-[11px] font-semibold uppercase tracking-wider text-slate-400"
+                    >
+                      Name
                     </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="Tell me about your project ideas..."
-                      value={formData.message}
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={formData.name}
                       onChange={handleChange}
                       required
-                      className="bg-slate-50/50 border-slate-200/80 focus-visible:ring-blue-500 focus-visible:bg-white min-h-[140px] rounded-xl resize-none transition-all"
+                      className="w-full h-10 px-3.5 rounded-lg bg-slate-900/70 border border-slate-700 text-slate-100 text-sm placeholder:text-slate-600
+                                 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all"
                     />
                   </div>
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="contact-email"
+                      className="text-[11px] font-semibold uppercase tracking-wider text-slate-400"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      placeholder="you@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full h-10 px-3.5 rounded-lg bg-slate-900/70 border border-slate-700 text-slate-100 text-sm placeholder:text-slate-600
+                                 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all"
+                    />
+                  </div>
+                </div>
 
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-medium tracking-wide transition-all shadow-lg shadow-slate-900/10 active:scale-[0.99]"
+                <div className="space-y-1.5">
+                  <label
+                    htmlFor="contact-message"
+                    className="text-[11px] font-semibold uppercase tracking-wider text-slate-400"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Sending Message...
-                      </>
-                    ) : (
-                      "Send Message"
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={5}
+                    placeholder="Tell me about the role or project..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3.5 py-3 rounded-lg bg-slate-900/70 border border-slate-700 text-slate-100 text-sm placeholder:text-slate-600
+                               focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 resize-none transition-all"
+                  />
+                </div>
 
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full h-11 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed
+                             text-white text-sm font-semibold flex items-center justify-center gap-2
+                             transition-all active:scale-[0.99] shadow-lg shadow-blue-900/30"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

@@ -1,217 +1,311 @@
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Sparkles, FolderCode } from "lucide-react";
+import { Github, ExternalLink, FolderCode } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+/* ──────────────────────────────────────────────────────────────
+   PROJECT DATA — Only factual entries from existing portfolio
+   Tic-Tac-Toe and Currency Converter removed from main display
+────────────────────────────────────────────────────────────── */
+const allProjects = [
+  {
+    title: "LeetCode Hint Extension",
+    tagline: "AI-powered Chrome extension for competitive programming",
+    description:
+      "A Chrome extension that fetches contextual hints and architectural insights for any LeetCode problem using the Google Gemini API. Backed by a deployed Node.js + Express server handling API orchestration.",
+    tech: ["JavaScript", "Chrome Extension API", "Node.js", "Express", "Gemini API"],
+    links: {
+      github: "https://github.com/Vishwathma2004/leetcode-hint-extension",
+      live: "https://leetcode-hint-extension.onrender.com",
+    },
+    date: "Jul 2025",
+    domain: "AI/ML",
+    featured: true,
+    highlights: [
+      "Chrome MV3 extension with content scripts",
+      "REST backend deployed on Render",
+      "Gemini API prompt engineering",
+    ],
+  },
+  {
+    title: "AgriData Collection System",
+    tagline: "Android data pipeline for downstream GNN workflows",
+    description:
+      "Production-grade Android application for securely collecting, parsing, and uploading structured farmer image metadata, optimized for Graph Neural Network (GNN) agricultural research pipelines.",
+    tech: ["Java", "Android SDK", "Firebase", "Cloudinary"],
+    links: { github: "" },
+    date: "May 2025 – Present",
+    domain: "Android",
+    featured: true,
+    highlights: [
+      "Firebase Realtime Database integration",
+      "Cloudinary image storage pipeline",
+      "Structured metadata schema for GNN training",
+    ],
+  },
+  {
+    title: "Sea Trash Detection & Clean-Up",
+    tagline: "Satellite + ROV marine debris detection (HackFest'25 — Top 15)",
+    description:
+      "AI-powered detection system identifying marine debris using satellite imagery and autonomous ROV feeds. Integrated Google Earth Engine data pipelines with custom YOLO/OpenCV detection layers.",
+    tech: ["Python", "TensorFlow", "Google Earth Engine API", "OpenCV", "YOLO"],
+    links: { github: "https://github.com/hackfest-dev/Hackfest25-37" },
+    date: "Feb 2025",
+    domain: "AI/ML",
+    featured: false,
+    highlights: [],
+  },
+  {
+    title: "Stock Price Predictor",
+    tagline: "Real-time ML dashboard with live market data",
+    description:
+      "Time-series prediction application using Yahoo Finance live data streams and regression models, visualized through an interactive Streamlit dashboard.",
+    tech: ["Python", "scikit-learn", "pandas", "Streamlit", "Yahoo Finance API"],
+    links: {
+      github: "https://github.com/Vishwathma2004/stock_price_predictor",
+      live: "https://stock-price-predictor-application.streamlit.app/",
+    },
+    date: "Dec 2024",
+    domain: "AI/ML",
+    featured: false,
+    highlights: [],
+  },
+  {
+    title: "Expense Tracker",
+    tagline: "Client-side personal finance dashboard",
+    description:
+      "Clean, responsive personal finance tracker supporting multi-category ledger entries, with local data persistence and real-time state updates.",
+    tech: ["JavaScript", "HTML", "CSS", "LocalStorage API"],
+    links: {
+      github: "https://github.com/Vishwathma2004/Expense-Tracker",
+      live: "https://expense-tracker-vishwathma2004s-projects.vercel.app/",
+    },
+    date: "Jun 2025",
+    domain: "Full-Stack",
+    featured: false,
+    highlights: [],
+  },
+];
+
+const domains = ["All", "AI/ML", "Android", "Full-Stack"];
 
 const Projects = () => {
-  const projectsData = [
-    {
-      title: "LeetCode Hint Fetcher Extension",
-      description:
-        "An advanced Chrome Extension that intelligently fetches hints and architectural insights for LeetCode problems using the Google Gemini API. Backed by a high-throughput, deployed Node.js architecture.",
-      tech: ["JavaScript", "Chrome Extension", "Node.js", "Express", "Gemini API"],
-      links: {
-        github: "https://github.com/Vishwathma2004/leetcode-hint-extension",
-        live: "https://leetcode-hint-extension.onrender.com",
-      },
-      date: "Jul 2025",
-      domain: "AI/ML",
-      featured: true, // Takes double grid space
-    },
-    {
-      title: "AgriData System",
-      description:
-        "Production-grade Android application designed to securely collect, parse, and upload structured farmer image metadata optimized for downstream Graph Neural Network (GNN) agricultural workflows.",
-      tech: ["Java", "Firebase", "Cloudinary", "Android SDK"],
-      links: { github: "" },
-      date: "May 2025 – Present",
-      domain: "Android",
-      featured: true, // Takes double grid space
-    },
-    {
-      title: "Sea Trash Detection & Clean-Up",
-      description:
-        "AI-powered detection system identifying marine debris using satellite imagery and autonomous ROV feeds. Integrated Google Earth Engine pipelines with custom OpenCV manipulation layers.",
-      tech: ["Python", "TensorFlow", "GEE API", "OpenCV"],
-      links: { github: "https://github.com/hackfest-dev/Hackfest25-37" },
-      date: "Feb 2025",
-      domain: "AI/ML",
-      featured: false,
-    },
-    {
-      title: "Stock Price Predictor App",
-      description:
-        "Predictive time-series application utilizing continuous Yahoo Finance data streams and optimized regression modeling. Rendered via responsive dashboard layers.",
-      tech: ["Python", "scikit-learn", "pandas", "Streamlit"],
-      links: {
-        github: "https://github.com/Vishwathma2004/stock_price_predictor",
-        live: "https://stock-price-predictor-application.streamlit.app/",
-      },
-      date: "Dec 2024",
-      domain: "AI/ML",
-      featured: false,
-    },
-    {
-      title: "Currency Converter App",
-      description:
-        "Android utility engineered for instantaneous calculation matching using live REST API integration. Designed around strict modern state management paradigms.",
-      tech: ["Java", "REST API", "Android Studio"],
-      links: {
-        github: "https://github.com/Vishwathma2004/Currency-Converter-App",
-      },
-      date: "Aug 2024",
-      domain: "Android",
-      featured: false,
-    },
-    {
-      title: "Expense Tracker Architecture",
-      description:
-        "Clean, user-centric client dashboard managing variable personal ledger statements. Supports localized data persistence and state synchronization loops.",
-      tech: ["JavaScript", "HTML", "CSS", "LocalStorage"],
-      links: {
-        github: "https://github.com/Vishwathma2004/Expense-Tracker",
-        live: "https://expense-tracker-vishwathma2004s-projects.vercel.app/",
-      },
-      date: "Jun 2025",
-      domain: "Full-Stack",
-      featured: false,
-    },
-    {
-      title: "Tic-Tac-Toe App",
-      description:
-        "Interactive native gaming experience compiled using Gradle automated configurations. Implements local state pattern matching algorithms.",
-      tech: ["Java", "Android SDK", "Gradle"],
-      links: { github: "https://github.com/Vishwathma2004/Tic-Tac-Toe-App" },
-      date: "Sept 2024",
-      domain: "Android",
-      featured: false,
-    },
-  ];
-
-  // Streamlining tag list into cohesive core domains to clean up button noise
-  const domains = ["All", "AI/ML", "Android", "Full-Stack"];
   const [selectedDomain, setSelectedDomain] = useState("All");
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>(0.06);
 
-  const filteredProjects = selectedDomain === "All"
-    ? projectsData
-    : projectsData.filter((p) => p.domain === selectedDomain);
+  const filtered =
+    selectedDomain === "All"
+      ? allProjects
+      : allProjects.filter((p) => p.domain === selectedDomain);
+
+  const featured = filtered.filter((p) => p.featured);
+  const secondary = filtered.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-24 bg-slate-50/40">
-      <div className="container max-w-6xl mx-auto px-6">
-        
-        {/* Modern Section Header */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-3">
-            Selected Architecture & Projects
-          </h2>
-          <div className="h-1 w-12 bg-blue-600 rounded-full" />
-        </div>
+    <section id="projects" className="py-24 bg-white dark:bg-background border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
+      <div className="section-container">
+        <div
+          ref={ref}
+          className={`animate-on-scroll ${isVisible ? "is-visible" : ""}`}
+        >
+          {/* Section header */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+            <div>
+              <p className="section-label mb-2">Projects</p>
+              <h2 className="section-title">Selected Work</h2>
+            </div>
 
-        {/* Clean Categorized Filter Tabs */}
-        <div className="flex flex-wrap justify-center items-center gap-1.5 mb-12 max-w-md mx-auto p-1 bg-slate-100/80 rounded-xl border border-slate-200/40">
-          {domains.map((domain) => (
-            <button
-              key={domain}
-              onClick={() => setSelectedDomain(domain)}
-              className={`flex-grow sm:flex-none px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide uppercase transition-all duration-200
-                ${selectedDomain === domain
-                  ? "bg-white text-slate-900 shadow-sm"
-                  : "text-slate-500 hover:text-slate-900"
-                }`}
-            >
-              {domain}
-            </button>
-          ))}
-        </div>
+            {/* Domain filter */}
+            <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800/50 rounded-xl self-start sm:self-auto">
+              {domains.map((domain) => (
+                <button
+                  key={domain}
+                  onClick={() => setSelectedDomain(domain)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ${
+                    selectedDomain === domain
+                      ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm"
+                      : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                  }`}
+                >
+                  {domain}
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* High-Quality Bento Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[minmax(340px,_auto)]">
-          {filteredProjects.map((project, index) => (
-            <Card 
-              key={index} 
-              className={`group flex flex-col h-full border border-slate-100 bg-white hover:shadow-xl shadow-slate-100/60 transition-all duration-500 rounded-2xl overflow-hidden
-                ${project.featured ? "lg:col-span-2" : "lg:col-span-1"}`}
-            >
-              {/* Card Header */}
-              <CardHeader className="p-6 pb-4">
-                <div className="flex justify-between items-start gap-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+          {/* ── Featured Projects ── */}
+          {featured.length > 0 && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+              {featured.map((project, i) => (
+                <div
+                  key={project.title}
+                  className={`group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-xl hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 flex flex-col animate-on-scroll ${isVisible ? "is-visible" : ""}`}
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  {/* Card top accent bar */}
+                  <div className="h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-400" />
+
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 border border-blue-100 dark:border-blue-800/50 rounded-md">
+                            {project.domain}
+                          </span>
+                          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+                            {project.date}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                          {project.title}
+                        </h3>
+                        <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                          {project.tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5 flex-1">
+                      {project.description}
+                    </p>
+
+                    {/* Highlights */}
+                    {project.highlights.length > 0 && (
+                      <div className="mb-5 space-y-1.5">
+                        {project.highlights.map((h) => (
+                          <div key={h} className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                            <span className="w-1 h-1 rounded-full bg-blue-400 shrink-0" />
+                            {h}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.tech.map((t) => (
+                        <span key={t} className="tech-tag">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2 mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                      {project.links.github ? (
+                        <a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-outline py-2 px-3.5 text-xs"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          Source
+                        </a>
+                      ) : (
+                        <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-dashed border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500 text-xs cursor-not-allowed">
+                          <FolderCode className="w-3.5 h-3.5" />
+                          Source Confidential
+                        </div>
+                      )}
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-primary py-2 px-3.5 text-xs"
+                        >
+                          Live Demo
+                          <ExternalLink className="w-3 h-3 opacity-80" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* ── Secondary Projects ── */}
+          {secondary.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {secondary.map((project, i) => (
+                <div
+                  key={project.title}
+                  className={`group card-base p-5 flex flex-col animate-on-scroll ${isVisible ? "is-visible" : ""}`}
+                  style={{ transitionDelay: `${(featured.length + i) * 70}ms` }}
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-md">
+                      {project.domain}
+                    </span>
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
                       {project.date}
                     </span>
-                    <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
-                      {project.title}
-                    </CardTitle>
                   </div>
-                  
-                  {/* Premium Feature Visual Flags */}
-                  <div className="flex flex-col items-end gap-1.5">
-                    <Badge variant="secondary" className="bg-slate-50 border border-slate-200/50 font-medium text-[10px] px-2 py-0.5 rounded-md text-slate-500">
-                      {project.domain}
-                    </Badge>
-                    {project.featured && (
-                      <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-50 border border-blue-100/60 font-semibold px-2 py-0.5 rounded-md text-[10px] flex items-center gap-1 shadow-none">
-                        <Sparkles className="w-2.5 h-2.5" /> Flagship
-                      </Badge>
+
+                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-1.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* Tech */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.tech.map((t) => (
+                      <span key={t} className="tech-tag text-[10px] py-0.5 px-2">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+                    {project.links.github ? (
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        Source
+                      </a>
+                    ) : null}
+                    {project.links.live && (
+                      <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors ml-auto"
+                      >
+                        Live Demo
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     )}
                   </div>
                 </div>
-              </CardHeader>
+              ))}
+            </div>
+          )}
 
-              {/* Card Technical Content Body */}
-              <CardContent className="p-6 pt-0 flex-grow flex flex-col justify-between gap-6">
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  {project.description}
-                </p>
-                
-                {/* Micro Tech Skill Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {project.tech.map((tech, i) => (
-                    <Badge 
-                      key={i} 
-                      variant="outline" 
-                      className="text-[10px] font-semibold bg-slate-50/50 border-slate-200/40 text-slate-500 rounded-md px-2 py-0.5 shadow-none"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-
-              {/* Clean Action Anchors Footer */}
-              <CardFooter className="p-6 pt-4 border-t border-slate-50 bg-slate-50/20 flex gap-3">
-                {project.links.github ? (
-                  <Button variant="outline" size="sm" asChild className="border-slate-200 bg-white hover:bg-slate-50 hover:text-slate-900 text-slate-600 h-9 rounded-xl px-4 text-xs font-semibold">
-                    <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-                      <Github className="h-3.5 w-3.5" /> Code
-                    </a>
-                  </Button>
-                ) : (
-                  <Button disabled size="sm" className="border border-dashed border-slate-200 bg-slate-50/50 text-slate-400 h-9 rounded-xl px-4 text-xs font-medium cursor-not-allowed">
-                    <FolderCode className="h-3.5 w-3.5 opacity-60" /> Source Confidential
-                  </Button>
-                )}
-                
-                {project.links.live && (
-                  <Button size="sm" asChild className="bg-slate-900 hover:bg-slate-800 text-white h-9 rounded-xl px-4 text-xs font-semibold shadow-md shadow-slate-900/5 group/btn">
-                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5">
-                      Live Demo <ExternalLink className="h-3 w-3 opacity-60 group-hover/btn:opacity-100 transition-opacity" />
-                    </a>
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
-          ))}
+          {/* GitHub CTA */}
+          <div className="mt-8 text-center">
+            <a
+              href="https://github.com/Vishwathma2004"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+            >
+              <Github className="w-4 h-4" />
+              More projects on GitHub
+              <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+            </a>
+          </div>
         </div>
-
       </div>
     </section>
   );

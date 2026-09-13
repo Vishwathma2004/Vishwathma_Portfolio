@@ -3,76 +3,83 @@ import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="bg-white border-t border-slate-100 py-12 text-slate-600">
-      <div className="container max-w-5xl mx-auto px-6">
-        
-        {/* Top Segment: Brand, Navigation, and Networks */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-8">
-          
-          {/* Brand Stack */}
+    <footer className="bg-slate-950 border-t border-slate-800/60 py-10">
+      <div className="section-container">
+
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+
+          {/* Brand */}
           <div className="space-y-1">
-            <h3 className="text-lg font-bold text-slate-900 tracking-tight">
+            <div className="text-sm font-bold text-slate-100 tracking-tight">
               Vishwathma N
-            </h3>
-            <p className="text-xs font-medium text-slate-400">
-              Full-Stack & Intelligent Systems Engineer
-            </p>
+            </div>
+            <div className="text-xs text-slate-500 font-medium">
+              Software Engineer · Full-Stack · AI Applications
+            </div>
           </div>
 
-          {/* Micro Internal Quick Links */}
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            <a href="#about" className="hover:text-blue-600 transition-colors">About</a>
-            <a href="#experience" className="hover:text-blue-600 transition-colors">Experience</a>
-            <a href="#projects" className="hover:text-blue-600 transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-blue-600 transition-colors">Contact</a>
-          </div>
-          
-          {/* Social Network Icon Strips */}
-          <div className="flex items-center gap-2">
+          {/* Quick links */}
+          <nav className="hidden md:flex items-center gap-5" aria-label="Footer navigation">
+            {[
+              { label: "About",      href: "#about" },
+              { label: "Experience", href: "#experience" },
+              { label: "Projects",   href: "#projects" },
+              { label: "Contact",    href: "#contact" },
+            ].map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-300 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Social links */}
+          <div className="flex items-center gap-1.5">
             <a
               href="https://github.com/Vishwathma2004"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-50 border border-transparent hover:border-slate-100 rounded-xl transition-all shadow-none"
               aria-label="GitHub"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-slate-200 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 transition-all"
             >
-              <Github size={18} />
+              <Github size={14} />
             </a>
             <a
               href="https://linkedin.com/in/vishwathma-n"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 border border-transparent hover:border-blue-100 rounded-xl transition-all shadow-none"
               aria-label="LinkedIn"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-blue-400 hover:bg-blue-950 border border-slate-800 hover:border-blue-800 transition-all"
             >
-              <Linkedin size={18} />
+              <Linkedin size={14} />
             </a>
             <a
               href="mailto:vishwathman@gmail.com"
-              className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100 rounded-xl transition-all shadow-none"
               aria-label="Email"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:text-emerald-400 hover:bg-emerald-950 border border-slate-800 hover:border-emerald-800 transition-all"
             >
-              <Mail size={18} />
+              <Mail size={14} />
             </a>
           </div>
         </div>
-        
-        {/* Bottom Segment: Copyright & Back To Top Interaction */}
-        <div className="mt-4 pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
-          <p>© {currentYear} Vishwathma N. All rights reserved.</p>
-          
-          {/* Back to top button */}
+
+        {/* Bottom bar */}
+        <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-600">
+          <span>© {currentYear} Vishwathma N. All rights reserved.</span>
           <button
-            onClick={handleScrollToTop}
-            className="group flex items-center gap-1.5 text-slate-400 hover:text-slate-900 font-semibold transition-colors"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group flex items-center gap-1.5 text-slate-500 hover:text-slate-300 transition-colors font-medium"
+            aria-label="Scroll to top"
           >
-            <span>Back to top</span>
-            <ArrowUp size={14} className="transition-transform group-hover:-translate-y-0.5 duration-300" />
+            Back to top
+            <ArrowUp
+              size={12}
+              className="transition-transform group-hover:-translate-y-0.5 duration-200"
+            />
           </button>
         </div>
 
