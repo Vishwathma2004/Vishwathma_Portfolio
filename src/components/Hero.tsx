@@ -164,7 +164,7 @@ const Hero = () => {
                       {terminalLines.length + 1}
                     </span>
                     <span className="text-emerald-400">$</span>
-                    <span className="ml-2 text-slate-300">▋</span>
+                    {/* <span className="ml-2 text-slate-300">▋</span> */}
                     <span
                       className="cursor-blink w-[9px] h-[15px] bg-blue-400 ml-0.5 mt-0.5 inline-block"
                       aria-hidden="true"
